@@ -3,7 +3,7 @@
     'team-options--local': isLocalTeam,
     'team-options--extern': isExternTeam
   }]">
-    <button @click="isMyTeamModalOpen = true">Mon équipe</button>
+    <h-button @click="isMyTeamModalOpen = true" text="Equipe"/>
     <team-modal
         v-if="isMyTeamModalOpen"
         @submit="emitSubmit"
@@ -15,10 +15,12 @@
 
 <script>
 import TeamModal from "../TeamModal/TeamModal";
+import HButton from "../utils/HButton";
 
 export default {
   name: "TeamOptions",
   components: {
+    HButton,
     TeamModal,
   },
   props: {
@@ -52,6 +54,7 @@ export default {
 .team-options {
   height: 100%;
   width: 25%;
+  padding: 5px;
 }
 
 .team-options--local {

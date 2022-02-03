@@ -1,6 +1,11 @@
 <template>
   <div class="header">
-    {{ getLocalVsExternText }}
+    <div class="header__teamDiv">
+      <span>{{ getLocalVsExternText }}</span>
+    </div>
+    <div class="header__scoreDiv">
+      <span>0 - 0</span>
+    </div>
   </div>
 </template>
 
@@ -23,9 +28,20 @@ export default {
   width: 100%;
   height: 100px;
   display: flex;
-  justify-content: center;
-  align-content: center;
-  background-color: red;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: 2px solid #D8D8F6;
+}
+
+.header__teamDiv {
+  color: #190933;
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.header__scoreDiv {
+  font-size: x-large;
 }
 
 </style>

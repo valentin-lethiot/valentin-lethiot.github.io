@@ -26,6 +26,13 @@ export default {
       }
     }
   }
+  /*
+  green: BEEF9E
+  blue: 3C6997
+  darkPurple: 190933
+  red: DB5461
+  gray: D8D8F6
+   */
 }
 </script>
 

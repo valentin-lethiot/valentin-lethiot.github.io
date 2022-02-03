@@ -25,15 +25,13 @@ export default {
 
 <style lang="scss" scoped>
 
-.actionPanel {
-  border: 1px solid black;
-}
+.actionPanel {}
 
 .actionPanel__header {
   width: 100%;
   height: 50px;
-  border-bottom: 1px solid aquamarine;
-  border-radius: 8px;
+  border-bottom: 2px solid #D8D8F6;
+  border-left: 2px solid #D8D8F6;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -41,6 +39,7 @@ export default {
 
 .actionPanel__actionList {
   width: 100%;
-  height: calc(100% - 51px);
+  height: 100%;
+  border-left: 2px solid #D8D8F6;
 }
 </style>
