@@ -1,7 +1,9 @@
 <template>
-  <button class="action-button">
-    {{ action.text }}
-  </button>
+  <div class="action-button">
+    <div>
+      {{ action.text }}
+    </div>
+  </div>
 </template>
 
 <script>
@@ -22,11 +24,11 @@ export default {
   height: 100px;
   width: 100px;
   background-color: cadetblue;
-  border: 1px solid rebeccapurple;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 8px;
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: flex-end;
 }
 

@@ -23,14 +23,14 @@ export default {
 .optionPanel {
   width: 100%;
   height: 100%;
-  background-color: antiquewhite;
   display: flex;
+  border-top: 2px solid #D8D8F6;
+  box-sizing: border-box;
 }
 
 .optionPanel__localSide {
   width: 45%;
   height: 100%;
-  background-color: chartreuse;
 }
 
 .optionPanel__matchOptions {
@@ -40,7 +40,6 @@ export default {
 .optionPanel__externSide {
   width: 45%;
   height: 100%;
-  background-color: lightcoral;
 }
 
 </style>

@@ -36,7 +36,7 @@ export default {
   border: none;
   font-size: medium;
   font-weight: bold;
-  color: #0015ff;
+  color: #2c5bad;
   height: 40px;
   width: 150px;
   background: none;
@@ -47,16 +47,18 @@ export default {
 
   &:hover {
     cursor: pointer;
-    background-color: #bbd4ff;
+    background-color: #2c5bad;
+    color: white;
   }
 }
 
 .tabButton--active {
-  border-bottom: 3px solid #0015ff;
+  border-bottom: 3px solid #2c5bad;
 
   &:hover {
     cursor: default;
     background: none;
+    color: #2c5bad;
   }
 }
 </style>

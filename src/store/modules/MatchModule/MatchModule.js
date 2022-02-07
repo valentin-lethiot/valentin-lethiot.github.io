@@ -1,11 +1,14 @@
 
-const matchModule = {
+const MatchModule = {
     namespaced: true,
     state: {
-        halfTime: 0
-        
+        attackingSide: "LOCAL"
     },
     getters: {
-
+        getAttackingSide: state => {
+            return state.attackingSide
+        }
     }
 }
+
+export default MatchModule;

@@ -55,15 +55,14 @@ export default {
   height: 100%;
   width: 25%;
   padding: 5px;
+  box-sizing: border-box;
 }
 
 .team-options--local {
-  background-color: lightblue;
   display: flex;
 }
 
 .team-options--extern {
-  background-color: lightgreen;
   display: flex;
   justify-content: flex-end;
 }

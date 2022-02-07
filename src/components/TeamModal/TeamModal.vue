@@ -71,7 +71,7 @@ export default {
 .teamManagerModal__header {
   width: 100%;
   height: 40px;
-  border-bottom: 1px solid #0015ff;
+  border-bottom: 1px solid #3C6997;
   border-radius: 5px 5px 0 0;
   display: flex;
   justify-content: space-between;

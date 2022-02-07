@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="app">
-    <Hheader/>
-    <VideoAction/>
+    <Hheader class="index__header"/>
+    <VideoAction class="index__videoAction"/>
     <OptionPanel class="index__optionPanel"/>
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
     }
   }
   /*
-  green: BEEF9E
+  green: 74b14d
   blue: 3C6997
   darkPurple: 190933
   red: DB5461
@@ -40,9 +40,24 @@ export default {
 .app {
   margin: 0;
   padding: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.index__header {
+  width: 100%;
+  height: 15%;
+}
+
+.index__videoAction {
+  width: 100%;
+  height: 70%;
 }
 
 .index__optionPanel {
   width: 100%;
+  height: 15%;
 }
 </style>

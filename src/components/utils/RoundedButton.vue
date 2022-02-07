@@ -54,7 +54,7 @@ export default {
 
 <style lang="scss" scoped>
 .roundedButton {
-  background-color: #0015ff;
+  background-color: #3C6997;
   color: white;
   border-radius: 50px;
   border: none;
@@ -66,14 +66,13 @@ export default {
   align-items: center;
 
   &:hover {
-    background-color: #8b93fa;
+    background-color: #2c5bad;
     cursor: pointer;
   }
 
   &:active {
-    background-color: #8b93fa;
+    background-color: #94aeda;
     cursor: pointer;
-    border: 3px solid blue;
   }
 }
 

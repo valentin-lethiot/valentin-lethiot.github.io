@@ -1,14 +1,16 @@
 <template>
   <div class="actionList">
     <HAction v-for="(action, index) of getCurrentActions" :key="index" :action="action"/>
+    <ActionChoosePlayerModal v-if="isActionChosePlayerModalOpen"/>
   </div>
 </template>
 
 <script>
-import HAction from "../../action/HAction";
+import HAction from "./HAction";
+import ActionChoosePlayerModal from "./ChoosePlayerModal/ActionChoosePlayerModal";
 export default {
   name: "actionList",
-  components: {HAction},
+  components: {ActionChoosePlayerModal, HAction},
   props: {
     actionSide: {
       type: String,
@@ -50,7 +52,8 @@ export default {
         {
           text: 'PIED'
         },
-      ]
+      ],
+      isActionChosePlayerModalOpen: true,
     }
   },
   computed: {
@@ -71,7 +74,10 @@ export default {
   height: 100%;
   padding: 5px;
   display: inline-grid;
+  justify-items: center;
   grid-template-rows: repeat(4, 110px);
-  grid-template-columns: repeat(5, 1fr);}
+  grid-template-columns: repeat(5, 1fr);
+  box-sizing: border-box;
+}
 
 </style>
