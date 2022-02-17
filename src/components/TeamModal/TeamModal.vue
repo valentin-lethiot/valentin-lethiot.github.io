@@ -9,7 +9,7 @@
       <rounded-button
           class="teamManagerModal__header__closeButton"
           size="medium"
-          :options="{icon: 'X', backgroundColor: 'gray'}"
+          :options="{icon: 'cancel', backgroundColor: 'gray'}"
           @click="closeModal"
       />
     </div>

@@ -3,8 +3,8 @@ const stopwatchModule = {
     state: {
         isRunning: false,
         watch: {
-            min: 0,
-            sec: 0,
+            min: 12,
+            sec: 56,
         }
     },
     getters: {

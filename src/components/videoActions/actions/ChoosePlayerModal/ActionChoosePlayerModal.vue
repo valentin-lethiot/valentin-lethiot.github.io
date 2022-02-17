@@ -1,14 +1,14 @@
 <template>
   <div class="actionChoosePlayerModal">
     <div class="actionChoosePlayerModal__title-div">
-      <span class="actionChoosePlayerModal__title">BUT pour HBC A</span>
+      <span class="actionChoosePlayerModal__title"> {{ getTitle }} </span>
     </div>
     <div class="actionChoosePlayerModal__players-div">
-      <action-players-list :players="getPlayers()" :selected-player-index="selectedPlayerIndex"/>
+      <action-players-list :players="getPlayers()" :selected-player-index="selectedPlayerIndex" @playerClicked="changeSelectedPlayer"/>
     </div>
     <div class="actionChoosePlayerModal__buttons-div">
-      <h-button color="red" text="Annuler"/>
-      <h-button color="green" text="Confirmer"/>
+      <h-button color="red" text="Annuler" @click="closeModal"/>
+      <h-button color="green" text="Confirmer" @click="confirm"/>
     </div>
   </div>
 </template>
@@ -17,12 +17,19 @@
 import HButton from "../../../utils/HButton";
 import ActionPlayersList from "./ActionPlayersList";
 import TeamUtils from "../../../../store/modules/TeamModule/TeamUtils";
+import MatchUtils from "../../../../store/modules/MatchModule/MatchUtils";
 
 export default {
   name: "ActionChoosePlayerModal",
   components: {
     ActionPlayersList,
     HButton
+  },
+  props: {
+    action: {
+      type: Object,
+      required: true
+    }
   },
   data() {
     return {
@@ -32,7 +39,22 @@ export default {
   },
   methods: {
     getPlayers() {
-      return TeamUtils.getPlayers('LOCAL')
+      return TeamUtils.getPlayers(MatchUtils.getAttackingSide())
+    },
+    changeSelectedPlayer(index) {
+      this.selectedPlayerIndex = index
+    },
+    closeModal() {
+      this.$emit('close')
+    },
+    confirm() {
+      this.$emit('confirm', this.selectedPlayerIndex)
+      this.selectedPlayerIndex = null
+    }
+  },
+  computed: {
+    getTitle() {
+      return `${this.action.text} pour HBC Chat`
     }
   }
 }
@@ -66,6 +88,7 @@ export default {
   color: #2c5bad;
   font-size: x-large;
   font-weight: bold;
+  font-family: sans-serif;
 }
 
 .actionChoosePlayerModal__players-div {

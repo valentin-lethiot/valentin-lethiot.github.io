@@ -45,7 +45,7 @@ export default {
   font-size: x-large;
   border-bottom: 1px solid #D8D8F6;
   box-sizing: border-box;
-  font-weight: bold;
+  font-family: sans-serif;
 
   &:hover {
     background-color: #D8D8F6;
@@ -55,5 +55,7 @@ export default {
 
 .actionPlayerItem--selected {
   background-color: #D8D8F6;
+  border-top: 1px solid #3C6997;
+  border-bottom: 1px solid #3C6997;
 }
 </style>

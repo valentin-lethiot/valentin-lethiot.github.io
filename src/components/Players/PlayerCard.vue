@@ -47,7 +47,7 @@ export default {
     getDeleteCardOptions() {
       return {
         backgroundColor: 'red',
-        icon: 'X'
+        icon: 'cancel'
       }
     }
   },

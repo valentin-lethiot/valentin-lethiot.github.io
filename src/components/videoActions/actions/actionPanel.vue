@@ -1,18 +1,29 @@
 <template>
   <div class="actionPanel">
     <div class="actionPanel__header">
-      <h-button
-          @click="showPositiveAction()"
-          :disabled="isPositiveActionButtonDisabled"
-          text="Action positives"
-          color="green"
+      <rounded-button
+          size="medium"
+          :options="{
+            icon: 'left-right-arrows',
+          }"
+          @click="changeAttackingSide()"
       />
-      <h-button
-          @click="showNegativeAction"
-          :disabled="isNegativeActionButtonDisabled"
-          text="Action negatives"
-          color="red"
-     />
+      <download-csv
+          :data="getCsvData"
+      >
+        <rounded-button
+          size="medium"
+          :options="{
+            icon: 'download',
+          }"
+      /></download-csv>
+      <ToggleSwitch
+          left-text="Positive"
+          right-text="Negative"
+          :selected-side="switchSelectedSide"
+          @clickLeft="toggleLeftClick"
+          @clickRight="toggleRightClick"
+      />
     </div>
     <div class="actionPanel__actionList">
       <ActionList :action-side="actionSide"/>
@@ -22,29 +33,52 @@
 
 <script>
 import ActionList from "./actionList";
-import HButton from "../../utils/HButton";
+import ActionsUtils from "@/store/modules/ActionsModule/ActionsUtils";
+import ActionsValues from "@/store/modules/ActionsModule/ActionsValues";
+import ToggleSwitch from "../../utils/ToggleSwitch";
+import RoundedButton from "../../utils/RoundedButton";
+import MatchUtils from "../../../store/modules/MatchModule/MatchUtils";
+import CSVUtils from "../../../store/modules/CSVModule/CSVUtils";
+
 export default {
   name: "actionPanel",
-  components: {HButton, ActionList},
+  components: {
+    RoundedButton,
+    ToggleSwitch,
+    ActionList
+  },
   data() {
     return {
-      actionSide: "positive"
+      actionSide: ActionsUtils.getActionsSide(),
+      switchSelectedSide: 'left'
     }
   },
   methods: {
-    showPositiveAction() {
-      this.actionSide = 'positive'
+    changeActionsSide() {
+      ActionsUtils.changeActionsSide()
+      this.actionSide = ActionsUtils.getActionsSide()
     },
-    showNegativeAction() {
-      this.actionSide = 'negative'
+    toggleLeftClick() {
+      this.switchSelectedSide = 'left'
+      this.changeActionsSide()
+    },
+    toggleRightClick() {
+      this.switchSelectedSide = 'right'
+      this.changeActionsSide()
+    },
+    changeAttackingSide() {
+      MatchUtils.changeAttackingSide()
+    },
+    getCsvData() {
+      return CSVUtils.getActions()
     }
   },
   computed: {
     isNegativeActionButtonDisabled() {
-      return this.actionSide === 'negative'
+      return this.actionSide === ActionsValues.NEGATIVE
     },
     isPositiveActionButtonDisabled() {
-      return this.actionSide === 'positive'
+      return this.actionSide === ActionsValues.POSITIVE
     }
   }
 }
@@ -56,20 +90,20 @@ export default {
 
 .actionPanel__header {
   width: 100%;
-  height: 50px;
+  height: 10%;
   border-bottom: 2px solid #D8D8F6;
   border-left: 2px solid #D8D8F6;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
   gap: 5px;
-  padding: 5px;
+  padding: 5px 15px;
 }
 
 .actionPanel__actionList {
   width: 100%;
-  height: 100%;
+  height: 90%;
   border-left: 2px solid #D8D8F6;
   padding: 15px;
   box-sizing: border-box;

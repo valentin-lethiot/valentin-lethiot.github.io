@@ -1,13 +1,15 @@
 <template>
   <div class="actionList">
-    <HAction v-for="(action, index) of getCurrentActions" :key="index" :action="action"/>
-    <ActionChoosePlayerModal v-if="isActionChosePlayerModalOpen"/>
+    <HAction v-for="(action, index) of getCurrentActions" :key="index" :action="action" @click="openChoosePlayerModal(action)"/>
+    <ActionChoosePlayerModal v-if="isActionChosePlayerModalOpen" @close="closeModal" @confirm="pushActionToCsv" :action="selectedAction"/>
   </div>
 </template>
 
 <script>
 import HAction from "./HAction";
 import ActionChoosePlayerModal from "./ChoosePlayerModal/ActionChoosePlayerModal";
+import actionsUtils from "@/store/modules/ActionsModule/ActionsUtils";
+import CSVUtils from "../../../store/modules/CSVModule/CSVUtils";
 export default {
   name: "actionList",
   components: {ActionChoosePlayerModal, HAction},
@@ -19,49 +21,27 @@ export default {
   },
   data () {
     return {
-      positiveActions: [
-        {
-          text: 'BUT'
-        },
-        {
-          text: 'FAUTE'
-        },
-        {
-          text: 'TIR'
-        },
-        {
-          text: 'ARRET'
-        },
-        {
-          text: 'CONTRE-ATTAQUE'
-        },
-      ],
-      negativeActions: [
-        {
-          text: 'CARTON JAUNE'
-        },
-        {
-          text: '2MIN'
-        },
-        {
-          text: 'CARTON ROUGE'
-        },
-        {
-          text: 'TIR RATE'
-        },
-        {
-          text: 'PIED'
-        },
-      ],
-      isActionChosePlayerModalOpen: true,
+      isActionChosePlayerModalOpen: false,
+      selectedAction: null
     }
   },
   computed: {
     getCurrentActions() {
-      if (this.actionSide === 'positive') {
-        return this.positiveActions
-      }
-      return this.negativeActions
+      return actionsUtils.getActions(this.actionSide)
+    }
+  },
+  methods: {
+    closeModal() {
+      this.selectedAction = {}
+      this.isActionChosePlayerModalOpen = false
+    },
+    openChoosePlayerModal(action) {
+      this.selectedAction = action
+      this.isActionChosePlayerModalOpen = true
+    },
+    pushActionToCsv(player) {
+      CSVUtils.addAction({action: this.selectedAction, player})
+      this.closeModal()
     }
   }
 }
@@ -71,13 +51,9 @@ export default {
 
 .actionList {
   width: 100%;
-  height: 100%;
-  padding: 5px;
-  display: inline-grid;
-  justify-items: center;
-  grid-template-rows: repeat(4, 110px);
-  grid-template-columns: repeat(5, 1fr);
-  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 </style>

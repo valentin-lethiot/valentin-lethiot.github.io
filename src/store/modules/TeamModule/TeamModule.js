@@ -2,23 +2,8 @@
 const teamModule = {
     namespaced: true,
     state: () => ({
-        teamName: 'HBC Chat',
-        players: [
-            {firstname: 'Valentin', name: 'Lethiot', poste: 'Pivot', number: 9},
-            {firstname: 'Amelia', name: 'Tripicchio', poste: 'Gardien', number: 12},
-            {firstname: 'Valentin', name: 'Lethiot', poste: 'Pivot', number: 9},
-            {firstname: 'Amelia', name: 'Tripicchio', poste: 'Gardien', number: 12},
-            {firstname: 'Valentin', name: 'Lethiot', poste: 'Pivot', number: 9},
-            {firstname: 'Valentin', name: 'Lethiot', poste: 'Pivot', number: 9},
-            {firstname: 'Amelia', name: 'Tripicchio', poste: 'Gardien', number: 12},
-            {firstname: 'Valentin', name: 'Lethiot', poste: 'Pivot', number: 9},
-            {firstname: 'Amelia', name: 'Tripicchio', poste: 'Gardien', number: 12},
-            {firstname: 'Valentin', name: 'Lethiot', poste: 'Pivot', number: 9},
-            {firstname: 'Amelia', name: 'Tripicchio', poste: 'Gardien', number: 12},
-            {firstname: 'Valentin', name: 'Lethiot', poste: 'Pivot', number: 9},
-            {firstname: 'Amelia', name: 'Tripicchio', poste: 'Gardien', number: 12},
-            {firstname: 'Valentin', name: 'Lethiot', poste: 'Pivot', number: 9},
-        ]
+        teamName: 'Team',
+        players: []
     }),
     getters: {
         getTeamName: state => {

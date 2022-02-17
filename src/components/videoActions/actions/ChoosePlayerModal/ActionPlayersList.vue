@@ -30,7 +30,6 @@ export default {
       return index === this.selectedPlayerIndex
     },
     playerClicked(index) {
-      this.selectedPlayerIndex = index
       this.$emit('playerClicked', index)
     }
   }

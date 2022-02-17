@@ -1,7 +1,8 @@
 import store from '../../index'
+import MatchUtils from "../MatchModule/MatchUtils";
 
 function getSide(side) {
-    if (side === 'LOCAL') {
+    if (MatchUtils.isLocalValue(side)) {
         return 'myTeam'
     }
     return 'opponentTeam'
@@ -17,6 +18,11 @@ function updateTeamName(side, teamName) {
 
 function getPlayers(side) {
     return store.getters[`${getSide(side)}/getPlayers`]
+}
+
+function getPlayer(side, playerId) {
+    const team = store.getters[`${getSide(side)}/getPlayers`]
+    return team[playerId]
 }
 
 function addPlayer(side, player) {
@@ -35,6 +41,7 @@ export default {
     getTeamName,
     updateTeamName,
     getPlayers,
+    getPlayer,
     addPlayer,
     updatePlayer,
     deletePlayer

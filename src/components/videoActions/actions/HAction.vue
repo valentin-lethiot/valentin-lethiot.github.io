@@ -1,8 +1,8 @@
 <template>
-  <div class="action-button">
-    <div>
+  <div @click="emitClick" class="action-button">
+    <span class="action-button__text">
       {{ action.text }}
-    </div>
+    </span>
   </div>
 </template>
 
@@ -14,6 +14,11 @@ export default {
       type: Object,
       required : true
     }
+  },
+  methods: {
+    emitClick() {
+      this.$emit('click')
+    }
   }
 }
 </script>
@@ -23,22 +28,24 @@ export default {
 .action-button {
   height: 100px;
   width: 100px;
-  background-color: cadetblue;
+  background-color: #3C6997;
   border-radius: 8px;
   padding: 8px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: flex-end;
+  text-align: end;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #327bc2;
+  }
+
+  .action-button__text {
+    color: white;
+    font-size: large;
+    font-family: sans-serif;
+  }
 }
 
-.action-button:hover {
-  cursor: pointer;
-  background-color: #4e8283;
-}
-
-.action-button:active {
-  background-color: #3b5d5e;
-  border: none;
-}
 </style>

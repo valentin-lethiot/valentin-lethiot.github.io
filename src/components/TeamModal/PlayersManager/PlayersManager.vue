@@ -8,7 +8,7 @@
       />
     </div>
     <div class="playersManager__panel">
-      <rounded-button @click="isCreatePlayerModalOpen = true"/>
+      <rounded-button @click="isCreatePlayerModalOpen = true" :options="{icon: 'plus'}"/>
     </div>
     <create-update-player-modal
         v-if="isCreatePlayerModalOpen"

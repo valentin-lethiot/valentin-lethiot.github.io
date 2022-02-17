@@ -33,7 +33,9 @@ export default {
   },
   methods: {
     click() {
-      this.$emit('click')
+      if(!this.disabled) {
+        this.$emit('click')
+      }
     }
   }
 }

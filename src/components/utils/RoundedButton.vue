@@ -8,15 +8,15 @@
         'roundedButton--medium': getSize === 'medium'
       }
     ]" @click="emitClick">
-    <span :class="[
+    <img :class="[
           'roundedButton__content',
           {
             'roundedButton__content--small': getSize === 'small',
             'roundedButton__content--medium': getSize === 'medium'
           }
-        ]">
-      {{ getIcon }}
-    </span>
+        ]"
+      :src="getIcon"
+    />
   </button>
 </template>
 
@@ -43,7 +43,7 @@ export default {
       return this.options?.backgroundColor
     },
     getIcon() {
-      return this.options?.icon || '+'
+      return require(`@/assets/icons/${this.options?.icon}.svg`)
     },
     getSize() {
       return this.size
@@ -114,15 +114,19 @@ export default {
 }
 
 .roundedButton__content {
-  font-size: xxx-large;
+  height: 50px;
   text-align: center;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(34deg) brightness(103%) contrast(103%);
+  transform: rotate(90deg) rotateX(3.142rad);
 }
 
 .roundedButton__content--small {
-  font-size: small;
+  width: 15px;
+  height: 15px;
 }
 
 .roundedButton__content--medium {
-  font-size: medium;
+  width: 20px;
+  height: 20px;
 }
 </style>
