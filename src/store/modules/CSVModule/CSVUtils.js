@@ -3,6 +3,8 @@ import StopwatchUtils from "../StopwatchModule/StopwatchUtils";
 import MatchUtils from "../MatchModule/MatchUtils";
 import TeamUtils from "../TeamModule/TeamUtils";
 
+const ObjectsToCsv = require('objects-to-csv');
+
 function addAction(actionPlayer) {
     store.dispatch('csv/addAction', formatActionToCsvRow(actionPlayer))
     MatchUtils.changeAttackingSide()
@@ -53,7 +55,17 @@ function getPlayer(playerId) {
     return `${player.name} ${player.firstname}`
 }
 
+async function exportToCsv() {
+    const actions = getActions()
+
+    const csv = new ObjectsToCsv(actions);
+
+    await csv.toDisk('./test.csv');
+    console.log(await csv.toString());
+}
+
 export default {
     addAction,
-    getScore
+    getScore,
+    exportToCsv
 }

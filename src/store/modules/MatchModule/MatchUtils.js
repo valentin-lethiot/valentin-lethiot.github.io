@@ -28,11 +28,16 @@ function isExternValue(value) {
     return value === MatchValues.EXTERN
 }
 
+function updateCurrentVideoTimestamp(value) {
+    return store.dispatch('match/updateCurrentVideoTimestamp', value)
+}
+
 export default {
     getAttackingSide,
     changeAttackingSide,
     isAttackingSideExtern,
     isAttackingSideLocal,
     isLocalValue,
-    isExternValue
+    isExternValue,
+    updateCurrentVideoTimestamp
 }

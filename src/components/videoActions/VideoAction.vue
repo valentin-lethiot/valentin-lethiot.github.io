@@ -2,7 +2,7 @@
   <div class="video-action__div">
     <div class="video__div">
       <div class="video">
-        <span>LA VIDEO ICI</span>
+        <video-player/>
       </div>
     </div>
     <action-panel class="actionPanel"/>
@@ -11,9 +11,11 @@
 
 <script>
 import ActionPanel from "./actions/actionPanel";
+import VideoPlayer from "./video/VideoPlayer"
+
 export default {
   name: "VideoAction",
-  components: {ActionPanel}
+  components: {ActionPanel, VideoPlayer}
 }
 </script>
 

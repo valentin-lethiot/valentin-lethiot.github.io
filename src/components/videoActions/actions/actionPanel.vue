@@ -8,15 +8,6 @@
           }"
           @click="changeAttackingSide()"
       />
-      <download-csv
-          :data="getCsvData"
-      >
-        <rounded-button
-          size="medium"
-          :options="{
-            icon: 'download',
-          }"
-      /></download-csv>
       <ToggleSwitch
           left-text="Positive"
           right-text="Negative"
@@ -69,8 +60,8 @@ export default {
     changeAttackingSide() {
       MatchUtils.changeAttackingSide()
     },
-    getCsvData() {
-      return CSVUtils.getActions()
+    async downloadCsv() {
+      await CSVUtils.exportToCsv()
     }
   },
   computed: {

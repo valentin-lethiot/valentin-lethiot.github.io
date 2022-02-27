@@ -41,6 +41,9 @@ export default {
     getPlayers() {
       return TeamUtils.getPlayers(MatchUtils.getAttackingSide())
     },
+    getTeamName() {
+      return TeamUtils.getTeamName(MatchUtils.getAttackingSide())
+    },
     changeSelectedPlayer(index) {
       this.selectedPlayerIndex = index
     },
@@ -54,7 +57,7 @@ export default {
   },
   computed: {
     getTitle() {
-      return `${this.action.text} pour HBC Chat`
+      return `${this.action.text} pour ${this.getTeamName()}`
     }
   }
 }

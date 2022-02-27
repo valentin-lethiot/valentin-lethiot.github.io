@@ -40,7 +40,7 @@ export default {
   },
   data() {
     return {
-      imageUrl: `https://avatars.dicebear.com/api/avataaars/${this.player.name}${this.player.firstname}.svg`
+      imageUrl: require(`@/assets/icons/user.svg`)
     }
   },
   computed: {
