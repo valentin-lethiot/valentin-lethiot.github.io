@@ -34,5 +34,7 @@ function changeActionsSide() {
 export default {
     getActions,
     changeActionsSide,
-    getActionsSide
+    getActionsSide,
+    getPositiveActions,
+    getNegativeActions
 }

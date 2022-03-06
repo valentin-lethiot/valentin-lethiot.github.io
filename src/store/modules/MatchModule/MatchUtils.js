@@ -5,6 +5,10 @@ function getAttackingSide() {
     return store.getters['match/getAttackingSide']
 }
 
+function getDefendingSide() {
+    return store.getters['match/getDefendingSide']
+}
+
 function changeAttackingSide() {
     if (isAttackingSideLocal()) {
         return store.dispatch('match/setAttackingSideExtern')
@@ -34,6 +38,7 @@ function updateCurrentVideoTimestamp(value) {
 
 export default {
     getAttackingSide,
+    getDefendingSide,
     changeAttackingSide,
     isAttackingSideExtern,
     isAttackingSideLocal,

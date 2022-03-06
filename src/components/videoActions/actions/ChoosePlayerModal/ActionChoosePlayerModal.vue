@@ -29,7 +29,7 @@ export default {
     action: {
       type: Object,
       required: true
-    }
+    },
   },
   data() {
     return {
@@ -39,10 +39,16 @@ export default {
   },
   methods: {
     getPlayers() {
-      return TeamUtils.getPlayers(MatchUtils.getAttackingSide())
+      if (this.action.isAttackingSide) {
+        return TeamUtils.getPlayers(MatchUtils.getAttackingSide())
+      }
+      return TeamUtils.getPlayers(MatchUtils.getDefendingSide())
     },
     getTeamName() {
-      return TeamUtils.getTeamName(MatchUtils.getAttackingSide())
+      if (this.action.isAttackingSide) {
+        return TeamUtils.getTeamName(MatchUtils.getAttackingSide())
+      }
+      return TeamUtils.getTeamName(MatchUtils.getDefendingSide())
     },
     changeSelectedPlayer(index) {
       this.selectedPlayerIndex = index

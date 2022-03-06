@@ -8,13 +8,6 @@
           }"
           @click="changeAttackingSide()"
       />
-      <ToggleSwitch
-          left-text="Positive"
-          right-text="Negative"
-          :selected-side="switchSelectedSide"
-          @clickLeft="toggleLeftClick"
-          @clickRight="toggleRightClick"
-      />
     </div>
     <div class="actionPanel__actionList">
       <ActionList :action-side="actionSide"/>
@@ -26,7 +19,6 @@
 import ActionList from "./actionList";
 import ActionsUtils from "@/store/modules/ActionsModule/ActionsUtils";
 import ActionsValues from "@/store/modules/ActionsModule/ActionsValues";
-import ToggleSwitch from "../../utils/ToggleSwitch";
 import RoundedButton from "../../utils/RoundedButton";
 import MatchUtils from "../../../store/modules/MatchModule/MatchUtils";
 import CSVUtils from "../../../store/modules/CSVModule/CSVUtils";
@@ -35,7 +27,6 @@ export default {
   name: "actionPanel",
   components: {
     RoundedButton,
-    ToggleSwitch,
     ActionList
   },
   data() {

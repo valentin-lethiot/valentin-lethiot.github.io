@@ -1,18 +1,28 @@
 <template>
-  <div class="actionList">
-    <HAction v-for="(action, index) of getCurrentActions" :key="index" :action="action" @click="openChoosePlayerModal(action)"/>
+  <div class="actionsContainer">
+    <div class="actionList">
+      <HPositiveAction v-for="(action, index) of getPositiveActions" :key="index" :action="action" @click="openChoosePlayerModal(action)"/>
+      </div>
+    <div class="actionList">
+      <HNegativeAction v-for="(action, index) of getNegativeActions" :key="index" :action="action" @click="openChoosePlayerModal(action)"/>
+    </div>
     <ActionChoosePlayerModal v-if="isActionChosePlayerModalOpen" @close="closeModal" @confirm="pushActionToCsv" :action="selectedAction"/>
   </div>
 </template>
 
 <script>
-import HAction from "./HAction";
+import HPositiveAction from "./HPositiveAction";
+import HNegativeAction from "./HNegativeAction";
 import ActionChoosePlayerModal from "./ChoosePlayerModal/ActionChoosePlayerModal";
 import actionsUtils from "@/store/modules/ActionsModule/ActionsUtils";
-import CSVUtils from "../../../store/modules/CSVModule/CSVUtils";
+import CSVUtils from "@/store/modules/CSVModule/CSVUtils";
 export default {
   name: "actionList",
-  components: {ActionChoosePlayerModal, HAction},
+  components: {
+    ActionChoosePlayerModal,
+    HPositiveAction,
+    HNegativeAction
+  },
   props: {
     actionSide: {
       type: String,
@@ -26,9 +36,12 @@ export default {
     }
   },
   computed: {
-    getCurrentActions() {
-      return actionsUtils.getActions(this.actionSide)
-    }
+    getPositiveActions() {
+      return actionsUtils.getPositiveActions()
+    },
+    getNegativeActions() {
+      return actionsUtils.getNegativeActions()
+    },
   },
   methods: {
     closeModal() {
@@ -49,11 +62,20 @@ export default {
 
 <style lang="scss" scoped>
 
+.actionsContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .actionList {
   width: 100%;
+  height: 50%;
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
+  box-sizing: border-box;
 }
 
 </style>

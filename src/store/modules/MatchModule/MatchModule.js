@@ -10,6 +10,12 @@ const MatchModule = {
         getAttackingSide: state => {
             return state.attackingSide
         },
+        getDefendingSide: state => {
+            if (state.attackingSide === MatchValues.EXTERN) {
+                return MatchValues.LOCAL
+            }
+            return MatchValues.EXTERN
+        },
         getCurrentVideoTimestamp: state => {
             return state.currentVideoTimestamp
         }
@@ -23,7 +29,6 @@ const MatchModule = {
         },
         UPDATE_CURRENT_VIDEO_TIMESTAMP(state, timestamp) {
             state.currentVideoTimestamp = timestamp
-            console.log(state.currentVideoTimestamp)
         }
     },
     actions: {

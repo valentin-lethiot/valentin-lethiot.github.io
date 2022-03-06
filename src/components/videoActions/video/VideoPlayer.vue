@@ -9,7 +9,7 @@
       >
         <source
             size="720"
-            src="https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm"
+            :src="videoSource"
             type="video/mp4"
         />
       </video>
@@ -22,6 +22,12 @@ import MatchUtils from "@/store/modules/MatchModule/MatchUtils";
 
 export default {
   name: "VideoPlayer",
+  props: {
+    videoSource: {
+      type: String,
+      default: ''
+    }
+  },
   mounted () {
     this.$refs.plyr.player.on('timeupdate', () => MatchUtils.updateCurrentVideoTimestamp(this.$refs.plyr.player.currentTime))
   },
@@ -39,12 +45,6 @@ export default {
       }
     }
   },
-  methods: {
-    updateVideoTime(event, a) {
-      console.log(JSON.stringify(event, undefined, 2))
-      console.log(JSON.stringify(a, undefined, 2))
-    }
-  }
 }
 </script>
 

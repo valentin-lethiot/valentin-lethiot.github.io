@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "HAction",
+  name: "HPositiveAction",
   props: {
     action: {
       type: Object,
@@ -26,24 +26,24 @@ export default {
 <style lang="scss" scoped>
 
 .action-button {
-  height: 100px;
-  width: 100px;
-  background-color: #3C6997;
+  height: 50px;
+  width: 80px;
+  background-color: #74b14d;
   border-radius: 8px;
   padding: 8px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  text-align: end;
+  justify-content: center;
+  text-align: center;
 
   &:hover {
     cursor: pointer;
-    background-color: #327bc2;
+    background-color: #5e8d3e;
   }
 
   .action-button__text {
     color: white;
-    font-size: large;
+    font-size: medium;
     font-family: sans-serif;
   }
 }
