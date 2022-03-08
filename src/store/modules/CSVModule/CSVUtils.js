@@ -7,8 +7,9 @@ const ObjectsToCsv = require('objects-to-csv');
 
 function addAction(actionPlayer) {
     store.dispatch('csv/addAction', formatActionToCsvRow(actionPlayer))
-    MatchUtils.changeAttackingSide()
-    console.log(JSON.stringify(store.getters["csv/getActions"], undefined, 2))
+    if (actionPlayer.action.isChangingSide) {
+        MatchUtils.changeAttackingSide()
+    }
 }
 
 function getActions() {
@@ -35,10 +36,11 @@ function getScore() {
 
 function formatActionToCsvRow(actionPlayer) {
     return {
+        videoTimestamp: getCurrentVideoTimestamp(),
         time: getCurrentTime(),
         actionType: actionPlayer.action.type,
         team: getCurrentTeam(),
-        player: getPlayer(actionPlayer.player)
+        player: getPlayer(actionPlayer.player, actionPlayer.action.isAttackingSide)
     }
 }
 
@@ -50,8 +52,13 @@ function getCurrentTeam() {
     return MatchUtils.getAttackingSide()
 }
 
-function getPlayer(playerId) {
-    const player = TeamUtils.getPlayer(MatchUtils.getAttackingSide(), playerId)
+function getCurrentVideoTimestamp() {
+    return MatchUtils.getCurrentVideoTimestamp()
+}
+
+function getPlayer(playerId, isAttackingSide) {
+    const side = isAttackingSide ? MatchUtils.getAttackingSide() : MatchUtils.getDefendingSide()
+    const player = TeamUtils.getPlayer(side, playerId)
     return `${player.name} ${player.firstname}`
 }
 

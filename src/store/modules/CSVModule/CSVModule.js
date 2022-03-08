@@ -12,6 +12,7 @@ const CSVModule = {
     mutations: {
         ADD_ACTION(state, action) {
             state.actions.push(action)
+            console.log(JSON.stringify(state.actions, undefined, 2))
         },
     },
     actions: {

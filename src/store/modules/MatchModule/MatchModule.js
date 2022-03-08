@@ -4,7 +4,8 @@ const MatchModule = {
     namespaced: true,
     state: {
         attackingSide: MatchValues.LOCAL,
-        currentVideoTimestamp: 0
+        currentVideoTimestamp: 0,
+        currentHalf: 0,
     },
     getters: {
         getAttackingSide: state => {
@@ -18,6 +19,9 @@ const MatchModule = {
         },
         getCurrentVideoTimestamp: state => {
             return state.currentVideoTimestamp
+        },
+        getCurrentHalf: state => {
+            return state.currentHalf
         }
     },
     mutations: {
@@ -29,6 +33,9 @@ const MatchModule = {
         },
         UPDATE_CURRENT_VIDEO_TIMESTAMP(state, timestamp) {
             state.currentVideoTimestamp = timestamp
+        },
+        INCREMENT_CURRENT_HALF(state) {
+            state.currentHalf += 1
         }
     },
     actions: {
@@ -40,6 +47,9 @@ const MatchModule = {
         },
         updateCurrentVideoTimestamp({commit}, timestamp){
             commit('UPDATE_CURRENT_VIDEO_TIMESTAMP', timestamp)
+        },
+        incrementCurrentHalf({commit}) {
+            commit('INCREMENT_CURRENT_HALF')
         }
     }
 }

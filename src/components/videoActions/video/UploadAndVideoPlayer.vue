@@ -3,8 +3,8 @@
     <div v-if="!video">
       <input type="file" accept="video/*" @change="videoUploaded( $event )"/>
     </div>
-    <div v-else>
-      <video-player :video-source="video"/>
+    <div v-else class="videoPlayer__div">
+      <video-player class="videoPlayer__player" :video-source="video"/>
     </div>
   </div>
 </template>
@@ -27,6 +27,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.videoPlayer__div {
+  width: 100%;
+}
 
+.videoPlayer__player {
+  width: 100%;
+}
 </style>

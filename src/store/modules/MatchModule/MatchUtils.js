@@ -36,6 +36,18 @@ function updateCurrentVideoTimestamp(value) {
     return store.dispatch('match/updateCurrentVideoTimestamp', value)
 }
 
+function changeCurrentHalf(){
+    return store.dispatch('match/incrementCurrentHalf')
+}
+
+function getCurrentHalf() {
+    return store.getters['match/getCurrentHalf']
+}
+
+function getCurrentVideoTimestamp() {
+    return store.getters['match/getCurrentVideoTimestamp']
+}
+
 export default {
     getAttackingSide,
     getDefendingSide,
@@ -44,5 +56,8 @@ export default {
     isAttackingSideLocal,
     isLocalValue,
     isExternValue,
-    updateCurrentVideoTimestamp
+    updateCurrentVideoTimestamp,
+    changeCurrentHalf,
+    getCurrentHalf,
+    getCurrentVideoTimestamp
 }
