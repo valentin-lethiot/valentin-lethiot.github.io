@@ -13,7 +13,7 @@
         <span>{{player.firstname}}</span>
       </div>
       <div class="playerCard__numberPoste">
-        <span>{{player.poste}}</span>
+        <span>{{getPosteLabel}}</span>
         -
         <span>{{player.number}}</span>
       </div>
@@ -23,6 +23,7 @@
 
 <script>
 import RoundedButton from "../utils/RoundedButton";
+import posteUtils from "../../utils/posteUtils";
 
 export default {
   name: "PlayerCard",
@@ -49,6 +50,9 @@ export default {
         backgroundColor: 'red',
         icon: 'cancel'
       }
+    },
+    getPosteLabel() {
+      return posteUtils.getLabel(this.player.poste)
     }
   },
   methods: {
